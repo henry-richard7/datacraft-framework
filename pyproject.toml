@@ -1,0 +1,14 @@
+[project]
+name = "datacraft-framework"
+version = "1.0.0"
+description = "A framework that eliminates the dependency on Apache Spark by leveraging delta-rs for the creation and management of Delta Lake tables. This framework follows Medallion architecture."
+readme = "README.md"
+authors = [
+    { name = "Henry-Richard7", email = "henry.richard.2k@gmail.com" }
+]
+requires-python = ">=3.10"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
