@@ -21,6 +21,8 @@ from datacraft_framework.Models.schema import (
 
 
 class BackendSettings(BaseSettings):
+    sqlalchemy_url: Optional[str] = Field(default=None, alias="database_url")
+
     # Database type
     database_type: Literal["mysql", "postgresql", "sqlite"] = Field(
         default="sqlite", alias="db_type"
@@ -49,6 +51,9 @@ class BackendSettings(BaseSettings):
     @computed_field
     @property
     def connection_string(self) -> str:
+        if self.sqlalchemy_url:
+            return self.sqlalchemy_url
+
         if self.database_type == "mysql":
             driver = "pymysql"
             return f"mysql+{driver}://{self.user}:{self.password}@{self.hostname}:{self.port}/{self.database}"
@@ -117,13 +122,13 @@ class OrchestrationProcess:
         """
         Inserts column metadata details into the database.
 
-        ## Args:
+        Args:
             column_metadata (CtlColumnMetadata): Metadata for the column to be inserted.
 
-        ## Returns:
+        Returns:
             None
 
-        ## Raises:
+        Raises:
             SQLAlchemy exception if an error occurs during insertion or commit.
         """
         self.session.add(column_metadata)
