@@ -15,6 +15,7 @@ from datacraft_framework.Models.schema import (
 from datacraft_framework.Common import OrchestrationProcess
 from datacraft_framework.Common.DataProcessor import BronzeInboundWriter
 from datacraft_framework.Common.FileNameGenerator import file_name_generator
+from datacraft_framework.Common.S3Process import path_to_s3
 
 import traceback
 import logging
@@ -24,6 +25,7 @@ load_dotenv()
 jars = getenv("jdbc_jars")
 jars = glob(jars + "*.jar")
 logger = logging.getLogger(__name__)
+env = getenv("env")
 
 
 class DatabaseExtractor:
@@ -118,7 +120,11 @@ class DatabaseExtractor:
         file_name = file_name_generator(
             data_acquisition_detail.outbound_source_file_pattern
         )
-        save_location_ = f"s3a://prod-{data_acquisition_detail.inbound_location.rstrip('/')}/{file_name}"
+        save_location_s3 = path_to_s3(
+            location=data_acquisition_detail.inbound_location.rstrip("/"),
+            env=env,
+        )["s3_location"]
+        save_location_ = f"{save_location_s3}/{file_name}"
 
         if save_location_ in pre_ingestion_processed_files:
             raise Exception(

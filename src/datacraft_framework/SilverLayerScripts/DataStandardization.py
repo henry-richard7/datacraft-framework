@@ -63,6 +63,10 @@ class DataStandardization:
             data_standard_location = path_to_s3(
                 location=dataset_master.data_standardisation_location, env=env
             )
+            landing_location_ = path_to_s3(
+                location=dataset_master.landing_location,
+                env=env,
+            )
 
             if len(unprocessed_files) != 0:
 
@@ -76,7 +80,7 @@ class DataStandardization:
                     }
 
                     df = DeltaTableRead(
-                        delta_path="s3a://prod-" + dataset_master.landing_location,
+                        delta_path=landing_location_["s3_location"],
                         batch_id=unprocessed_file.batch_id,
                     ).read()
                     df = df.rename(rename_mapping)

@@ -10,9 +10,14 @@ import json
 from pathlib import Path
 import re
 
+from os import getenv
+from dotenv import load_dotenv
+
+import itertools
+
 from datacraft_framework.Common import JsonDataMapper, OrchestrationProcess
 from datacraft_framework.Common.Logger import LoggerManager
-
+from datacraft_framework.Common.S3Process import S3Process, path_to_s3
 from datacraft_framework.Models.schema import (
     ctlApiConnectionsDtl,
     CtlColumnMetadata,
@@ -21,7 +26,10 @@ from datacraft_framework.Models.schema import (
 )
 from datacraft_framework.Common.FileNameGenerator import file_name_generator
 from datacraft_framework.Common.DataProcessor import BronzeInboundWriter
-import itertools
+
+
+load_dotenv()
+env = getenv("env")
 
 
 class APIAutomation:
@@ -341,7 +349,11 @@ class APIExtractor:
         file_name = file_name_generator(
             data_acquisition_detail.outbound_source_file_pattern
         )
-        save_location_ = f"s3a://prod-{data_acquisition_detail.inbound_location.rstrip('/')}/{file_name}"
+        save_location_s3 = path_to_s3(
+            location=data_acquisition_detail.inbound_location.rstrip("/"),
+            env=env,
+        )
+        save_location_ = save_location_s3["s3_location"]
 
         if save_location_ in [x.inbound_file_location for x in pre_ingestion_logs]:
             logger.error(f"The file {file_name} is already processed to Bronze Layer.")
@@ -423,7 +435,12 @@ class APIExtractor:
 
             if write_data:
                 file_name = file_name_generator(file_name)
-                save_location = f"s3a://prod-{data_acquisition_detail.inbound_location.rstrip('/')}/{file_name}"
+
+                path_to_s3_ = path_to_s3(
+                    location=data_acquisition_detail.inbound_location.rstrip("/"),
+                    env=env,
+                )["s3_location"]
+                save_location = f"{path_to_s3_}/{file_name}"
 
                 BronzeInboundWriter(
                     input_data=mapped_data,

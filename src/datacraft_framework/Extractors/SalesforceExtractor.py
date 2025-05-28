@@ -11,9 +11,16 @@ from datacraft_framework.Models.schema import (
 )
 from datacraft_framework.Common import OrchestrationProcess
 from datacraft_framework.Common.DataProcessor import BronzeInboundWriter
+from datacraft_framework.Common.S3Process import path_to_s3
 
 import logging
 import traceback
+
+from os import getenv
+from dotenv import load_dotenv
+
+load_dotenv()
+env = getenv("env")
 
 logger = logging.getLogger(__name__)
 
@@ -159,7 +166,11 @@ class SalesforceExtractor:
             data_acquisition_detail.outbound_source_file_pattern
         )
 
-        save_location_ = f"s3a://prod-{data_acquisition_detail.inbound_location.rstrip('/')}/{file_name}"
+        path_s3 = path_to_s3(
+            location=data_acquisition_detail.inbound_location.rstrip("/"),
+            env=env,
+        )
+        save_location_ = f"{path_s3['s3_location']}/{file_name}"
 
         if save_location_ in pre_ingestion_processed_files:
             raise Exception(

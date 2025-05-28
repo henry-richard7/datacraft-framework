@@ -14,9 +14,15 @@ from datacraft_framework.Common import (
     OrchestrationProcess,
     DataProcessor,
 )
+from datacraft_framework.Common.S3Process import path_to_s3
 from io import BytesIO
 import logging
 import traceback
+from os import getenv
+from dotenv import load_dotenv
+
+load_dotenv()
+env = getenv("env")
 
 logger = logging.getLogger(__name__)
 
@@ -137,7 +143,11 @@ class S3Extractor:
                         else False
                     ),
                 ):
-                    file_save_name = f"s3a://prod-{data_acquisition_detail.inbound_location.rstrip('/')}/{file_name_s3}"
+                    path_s3 = path_to_s3(
+                        location=data_acquisition_detail.inbound_location.rstrip("/"),
+                        env=env,
+                    )
+                    file_save_name = f"{path_s3['s3_location']}/{file_name_s3}"
 
                     if file_save_name not in pre_ingestion_processed_files:
                         new_files.append(file_save_name)
@@ -158,7 +168,7 @@ class S3Extractor:
                             splited_ = data_acquisition_detail.inbound_location.split(
                                 "/"
                             )
-                            bucket_name = "prod-" + splited_[0]
+                            bucket_name = path_s3["bucket"]
                             splited_.pop(0)
                             aws_file_key = (
                                 "/".join(splited_) + file_name_s3.split("/")[-1]

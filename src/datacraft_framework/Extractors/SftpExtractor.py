@@ -11,6 +11,13 @@ from datacraft_framework.Models.schema import (
     ctlDataAcquisitionDetail,
 )
 from datacraft_framework.Common import PatternValidator, S3Process, OrchestrationProcess
+from datacraft_framework.Common.S3Process import path_to_s3
+
+from os import getenv
+from dotenv import load_dotenv
+
+load_dotenv()
+env = getenv("env")
 
 logger = logging.getLogger(__name__)
 
@@ -82,8 +89,12 @@ class SftpExtractor:
         new_files = list()
 
         for file_ in files:
+            path_s3 = path_to_s3(
+                location=data_acquisition_detail.inbound_location.rstrip("/"),
+                env=env,
+            )
 
-            save_location_ = f"s3a://prod-{data_acquisition_detail.inbound_location.rstrip('/')}/{file_}"
+            save_location_ = f"{path_s3['s3_location']}/{file_}"
 
             if save_location_ not in pre_ingestion_processed_files:
 
@@ -118,7 +129,7 @@ class SftpExtractor:
                         buffer.seek(0)
 
                         splited_ = data_acquisition_detail.inbound_location.split("/")
-                        bucket_name = "prod-" + splited_[0]
+                        bucket_name = path_s3["bucket"]
                         splited_.pop(0)
                         aws_file_key = "/".join(splited_) + file_.split("/")[-1]
 
@@ -134,7 +145,7 @@ class SftpExtractor:
                                 process_id=data_acquisition_detail.process_id,
                                 pre_ingestion_dataset_id=data_acquisition_detail.pre_ingestion_dataset_id,
                                 outbound_source_location=data_acquisition_detail.outbound_source_location,
-                                inbound_file_location=f"s3a://prod-{data_acquisition_detail.inbound_location.rstrip('/')}/{file_}",
+                                inbound_file_location=save_location_,
                                 status="SUCCEEDED",
                                 start_time=start_time,
                                 end_time=datetime.now(),
