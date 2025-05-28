@@ -18,8 +18,8 @@ class LoggerManager:
         backup_count: int = 5,
         log_level: int = logging.DEBUG,
     ):
-        log_path = getenv("log_folder")
-        self.log_file = Path(log_path) / f"process_id {process_id}.log"
+        log_path = getenv("lakehouse_framework_home")
+        self.log_file = Path(log_path) / "logs" / f"process_id {process_id}.log"
         self.max_bytes = max_bytes
         self.backup_count = backup_count
         self.log_level = log_level
@@ -27,7 +27,7 @@ class LoggerManager:
         self._configure_logging()
 
     def _configure_logging(self):
-        Path(self.log_file).parent.mkdir(parents=True, exist_ok=True)
+        Path(self.log_file).mkdir(parents=True, exist_ok=True)
 
         logger = logging.getLogger()
         logger.setLevel(self.log_level)

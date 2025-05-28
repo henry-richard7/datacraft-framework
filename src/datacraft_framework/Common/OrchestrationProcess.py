@@ -3,6 +3,8 @@ from pydantic_settings import BaseSettings
 from typing import Literal
 from sqlmodel import SQLModel, create_engine, Session, select
 from typing import Optional, Union
+from pathlib import Path
+
 from datacraft_framework.Models.schema import (
     ctlApiConnectionsDtl,
     CtlColumnMetadata,
@@ -34,6 +36,9 @@ class BackendSettings(BaseSettings):
     password: Optional[str] = Field(default=None, alias="db_password")
     hostname: Optional[str] = Field(default="localhost", alias="db_host")
     port: Optional[int] = Field(default=None, alias="db_port")
+    datacraft_framework_home: Optional[str] = Field(
+        default=str(Path.home() / "datacraft_framework")
+    )
 
     # Extra settings
     email_bot_name: str = Field(default="Automation Bot")
@@ -41,6 +46,8 @@ class BackendSettings(BaseSettings):
     # Port defaults based on database type
     @model_validator(mode="after")
     def set_defaults(self):
+        Path(self.datacraft_framework_home).mkdir(parents=True, exist_ok=True)
+
         if self.port is None:
             if self.database_type == "mysql":
                 self.port = 3306
@@ -61,7 +68,8 @@ class BackendSettings(BaseSettings):
             driver = "psycopg2"
             return f"postgresql+{driver}://{self.user}:{self.password}@{self.hostname}:{self.port}/{self.database}"
         elif self.database_type == "sqlite":
-            return f"sqlite:///{self.database}.sqlite3"
+            db_path = Path(self.datacraft_framework_home) / f"{self.database}.db"
+            return f"sqlite:///{db_path}"
         else:
             raise ValueError(f"Unsupported database type: {self.database_type}")
 
