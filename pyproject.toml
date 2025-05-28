@@ -8,7 +8,7 @@ authors = [
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "boto3>=1.38.23",
+    "boto3>=1.38.24",
     "deltalake>=0.25.5",
     "jaydebeapi>=1.2.3",
     "jsonpath-ng>=1.7.0",
@@ -19,7 +19,7 @@ dependencies = [
     "polars-hash>=0.5.4",
     "pydantic-settings>=2.9.1",
     "python-dotenv>=1.1.0",
-    "s3fs>=2025.5.1",
+    "s3fs>=0.4.2",
     "sqlmodel>=0.0.24",
 ]
 
