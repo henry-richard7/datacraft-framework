@@ -158,7 +158,7 @@ class OrchestrationProcess:
         result = self.session.exec(query).all()
         return result
 
-    def insert_ctl_column_metadata(self, column_metadata: CtlColumnMetadata):
+    def insert_ctl_column_metadata(self, column_metadata: CtlColumnMetadata) -> None:
         """
         Inserts column metadata details into the database.
 
