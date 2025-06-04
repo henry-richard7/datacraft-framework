@@ -1,0 +1,29 @@
+site_name: "Datacraft Framework"
+
+theme:
+  name: "material"
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            show_source: true
+            show_signature: true
+            show_root_heading: true
+            show_bases: true
+            show_submodules: true
+            members_order: source
+            filters: "!^_"
+            inherited_members: true
+            docstring_style: google
+            annotations_path: brief
+
+  - autorefs
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
