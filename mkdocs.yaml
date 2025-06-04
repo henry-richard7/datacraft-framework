@@ -40,3 +40,14 @@ nav:
           - "Regex Date Formats": Common/RegexDateFormats.md
           - "Schema Caster": Common/SchemaCaster.md
           - "Data Processor": Common/DataProcessor.md
+
+      - "Extractors - Bronze Layer Scripts":
+          - "Api Extractor": Extractors/ApiExtractor.md
+          - "Database Extractor": Extractors/DatabaseExtractor.md
+          - "S3 Extractor": Extractors/S3Extractor.md
+          - "Salesforce Extractor": Extractors/SalesforceExtractor.md
+          - "SFTP Extractor": Extractors/SftpExtractor.md
+
+      - "Silver LayerScripts":
+          - "Data Standardization": SilverLayerScripts/DataStandardization.md
+          - "Data Quality Check": SilverLayerScripts/DataQualityCheck.md
