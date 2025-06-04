@@ -60,3 +60,6 @@ nav:
           - "Bronze Layer": MedallionProcess/BronzeLayer.md
           - "Siver Layer": MedallionProcess/SilverLayer.md
           - "Gold Layer": MedallionProcess/GoldLayer.md
+
+      - "Models":
+          - "schema": "Models/Schema.md"
