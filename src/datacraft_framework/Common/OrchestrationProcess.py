@@ -23,6 +23,31 @@ from datacraft_framework.Models.schema import (
 
 
 class BackendSettings(BaseSettings):
+    """Configure backend database settings for the datacraft framework.
+
+    This class manages configuration parameters related to connecting to a database.
+    It supports MySQL, PostgreSQL, and SQLite databases. If a full SQLAlchemy URL is
+    provided via `sqlalchemy_url`, it will be used directly. Otherwise, connection
+    parameters like user, password, host, port, etc., are used to construct the URL.
+
+    Attributes:
+        sqlalchemy_url (Optional[str]): Full SQLAlchemy connection string.
+            If provided, this takes precedence over other fields.
+        database_type (Literal["mysql", "postgresql", "sqlite"]): Type of database to use.
+            Defaults to "sqlite".
+        database (str): Name of the database/schema.
+        user (Optional[str]): Database user.
+        password (Optional[str]): Database password.
+        hostname (Optional[str]): Database host. Defaults to "localhost".
+        port (Optional[int]): Database port. Defaults based on database type:
+            * MySQL: 3306
+            * PostgreSQL: 5432
+        datacraft_framework_home (Optional[str]): Root directory for framework files.
+            Defaults to `$HOME/datacraft_framework`.
+        connection_string (str): Computed field that returns the final SQLAlchemy
+            connection string based on the configured values.
+    """
+
     sqlalchemy_url: Optional[str] = Field(default=None, alias="database_url")
 
     # Database type
@@ -40,9 +65,6 @@ class BackendSettings(BaseSettings):
         default=str(Path.home() / "datacraft_framework")
     )
 
-    # Extra settings
-    email_bot_name: str = Field(default="Automation Bot")
-
     # Port defaults based on database type
     @model_validator(mode="after")
     def set_defaults(self):
@@ -58,6 +80,16 @@ class BackendSettings(BaseSettings):
     @computed_field
     @property
     def connection_string(self) -> str:
+        """Generate SQLAlchemy connection string based on database configuration.
+
+        If `sqlalchemy_url` is provided, it is returned as-is. Otherwise,
+        constructs the appropriate connection string using the relevant
+        dialect driver (e.g., pymysql for MySQL, psycopg2 for PostgreSQL),
+        or builds an SQLite path.
+
+        Returns:
+            str: A valid SQLAlchemy connection string.
+        """
         if self.sqlalchemy_url:
             return self.sqlalchemy_url
 
