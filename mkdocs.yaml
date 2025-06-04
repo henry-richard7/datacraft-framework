@@ -51,3 +51,12 @@ nav:
       - "Silver LayerScripts":
           - "Data Standardization": SilverLayerScripts/DataStandardization.md
           - "Data Quality Check": SilverLayerScripts/DataQualityCheck.md
+
+      - "Gold Layer Scripts":
+          - "Transformation": GoldLayerScripts/Transformation.md
+          - "Transformation DataQuality Check": GoldLayerScripts/TransformationDataQualityCheck.md
+
+      - "Medallion Process":
+          - "Bronze Layer": MedallionProcess/BronzeLayer.md
+          - "Siver Layer": MedallionProcess/SilverLayer.md
+          - "Gold Layer": MedallionProcess/GoldLayer.md
