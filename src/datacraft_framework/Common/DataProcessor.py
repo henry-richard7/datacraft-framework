@@ -333,34 +333,3 @@ class DeltaTableWriterScdType2:
                 "predicate": f"target.eff_end_dt == '9999-12-31' AND {primary_keys}",
             },
         ).when_not_matched_insert_all().execute()
-
-
-class DeltaTableStreamlitAdapter:
-    """
-    Adapter class to read Delta Lake tables for visualization in Streamlit applications.
-
-    This class provides a simple interface to load data from a Delta Lake table using lazy evaluation
-    via Polars' `scan_delta`, making it suitable for large datasets commonly used in dashboards.
-    """
-
-    def __init__(
-        self,
-        delta_path: str,
-    ):
-        """
-        Initialize the adapter with the path to the Delta Lake table.
-
-        Args:
-            delta_path (str): Path to the Delta Lake table that will be queried.
-        """
-        self.delta_path = delta_path
-
-    def read(self):
-        """
-        Read the Delta Lake table into a LazyFrame for deferred execution.
-
-        Returns:
-            polars.LazyFrame: A lazy representation of the Delta Lake table,
-            suitable for efficient querying and visualization in Streamlit.
-        """
-        return polars.scan_delta(self.delta_path, storage_options=storage_options)
