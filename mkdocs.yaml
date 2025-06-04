@@ -27,3 +27,16 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+
+nav:
+  - "Get Started": index.md
+  - "Code Documentation":
+      - "Common":
+          - "JsonData Mapper": Common/JsonDataMapper.md
+          - "FileName Generator": Common/FileNameGenerator.md
+          - "Orchestration Process": Common/OrchestrationProcess.md
+          - "Pattern Validator": Common/PatternValidator.md
+          - "S3 Process": Common/S3Process.md
+          - "Regex Date Formats": Common/RegexDateFormats.md
+          - "Schema Caster": Common/SchemaCaster.md
+          - "Data Processor": Common/DataProcessor.md
