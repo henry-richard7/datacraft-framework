@@ -36,7 +36,7 @@ class DatabaseExtractor:
     It also logs ingestion details into a control table via `OrchestrationProcess`.
     """
 
-    def connect_via_jdbc(self, config: dict):
+    def connect_via_jdbc(self, config: dict) -> jaydebeapi.Connection:
         """
         Connect to a JDBC-compatible database dynamically based on the config dictionary.
 

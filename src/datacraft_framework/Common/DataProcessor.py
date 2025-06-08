@@ -238,11 +238,6 @@ class DeltaTableRead:
         batch_id: Optional[int] = None,
         latest: bool = False,
     ):
-        self.delta_path = delta_path
-        self.batch_id = batch_id
-        self.latest = latest
-
-    def read(self):
         """
         Initialize the DeltaTableRead instance with read parameters.
 
@@ -251,6 +246,27 @@ class DeltaTableRead:
             batch_id (Optional[int], optional): Specific batch ID to filter data. Defaults to None.
             latest (bool, optional): Whether to fetch only the latest batch. Defaults to False.
         """
+
+        self.delta_path = delta_path
+        self.batch_id = batch_id
+        self.latest = latest
+
+    def read(self) -> polars.DataFrame:
+        """
+        Read data from the Delta Lake table based on the configured parameters.
+
+        If a `batch_id` is provided, it filters the data to only that batch.
+        If `latest` is True, it reads only the latest batch based on the maximum `batch_id`.
+        If neither is specified, it reads the full table.
+
+        Returns:
+            polars.DataFrame: A DataFrame containing the filtered or full Delta Lake table data.
+
+        Raises:
+            FileNotFoundError: If the Delta table at `delta_path` does not exist.
+            Exception: For other generic I/O or Delta table errors during reading.
+        """
+
         if self.batch_id:
             df = polars.scan_delta(self.delta_path, storage_options=storage_options)
             df = df.filter(polars.col("batch_id") == self.batch_id)

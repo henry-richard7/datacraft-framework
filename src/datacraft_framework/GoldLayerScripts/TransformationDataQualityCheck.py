@@ -49,7 +49,7 @@ class TransformationDataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         """
         Perform null value check on specified column.
 
@@ -202,7 +202,7 @@ class TransformationDataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         """
         Check that all values in a column (or set of columns) are unique.
 
@@ -354,7 +354,7 @@ class TransformationDataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         """
         Validate string length against a user-defined expression.
 
@@ -512,7 +512,7 @@ class TransformationDataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         """
         Validate column values match expected date format using regex patterns.
 
@@ -668,7 +668,7 @@ class TransformationDataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         r"""
         Validate column values are integers.
 
@@ -823,7 +823,7 @@ class TransformationDataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         r"""
         Validate column values are numeric (including decimals).
 
@@ -978,7 +978,7 @@ class TransformationDataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         """
         Validate column values fall within a defined domain.
 
@@ -1133,7 +1133,7 @@ class TransformationDataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         """
         Apply custom SQL-like filter to perform flexible quality checks.
 

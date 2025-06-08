@@ -27,6 +27,8 @@ from datacraft_framework.Models.schema import (
 from datacraft_framework.Common.FileNameGenerator import file_name_generator
 from datacraft_framework.Common.DataProcessor import BronzeInboundWriter
 
+from typing import Union, List
+
 
 load_dotenv()
 env = getenv("env")
@@ -56,7 +58,7 @@ class APIAutomation:
         self.data = {}
         self.json_body = {}
 
-    def _replace_date(self, date_match):
+    def _replace_date(self, date_match) -> str:
         """
         Replace date placeholders like `$current_date-7$` with actual dates.
 
@@ -64,7 +66,7 @@ class APIAutomation:
             date_match (str): Placeholder string like "$current_date-7:%Y-%m$".
 
         Returns:
-            str: Formatted date string.
+            date: Formatted date string.
         """
 
         if ":" in date_match:
@@ -190,7 +192,7 @@ class APIAutomation:
         params: dict,
         data: dict,
         json_body: dict,
-    ):
+    ) -> Union[dict, List[dict]]:
         """
         Execute an API request and return the processed response.
 
@@ -203,7 +205,7 @@ class APIAutomation:
             json_body (dict): JSON payload.
 
         Returns:
-            Union[dict, List[dict]]: JSON response parsed into a dict or list of dicts.
+            JSON response parsed into a dict or list of dicts.
         """
 
         response = niquests.request(
@@ -218,7 +220,7 @@ class APIAutomation:
         response.raise_for_status()
         return response.json()
 
-    def make_request(self, step):
+    def make_request(self, step) -> Union[dict, List[dict]]:
         """
         Process and execute a single API request step.
 
@@ -291,14 +293,14 @@ class APIAutomation:
 
         return {"values_based_response": [r.json() for r in responses]}
 
-    def execute_workflow(self):
+    def execute_workflow(self) -> Union[dict, List[dict]]:
         """
         Execute the entire configured API workflow step-by-step.
 
         Iterates through the `config` list and executes each step in sequence.
 
         Returns:
-            Any: Result of the final API call.
+            (Union[dict, List[dict]]): Result of the final API call.
         """
         for step in self.config:
             if step["type"] == "TOKEN":
@@ -483,12 +485,12 @@ class APIExtractor:
             )
             raise
 
-    def get_json(self):
+    def get_json(self) -> Union[dict, List[dict]]:
         """
         Get the final extracted and mapped result.
 
         Returns:
-            Any: Extracted structured data (typically a list of dictionaries).
+            Extracted structured data (typically a list of dictionaries).
         """
 
         return self.result

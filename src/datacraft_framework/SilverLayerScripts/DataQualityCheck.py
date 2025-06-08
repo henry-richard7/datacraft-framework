@@ -34,7 +34,7 @@ class DataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         """
         Perform null value check on specified column.
 
@@ -190,7 +190,7 @@ class DataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         """
         Check that all values in a column (or set of columns) are unique.
 
@@ -344,7 +344,7 @@ class DataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         """
         Validate string length against an expected expression.
 
@@ -503,7 +503,7 @@ class DataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         """
         Validate column values match expected date format using regex patterns.
 
@@ -658,7 +658,7 @@ class DataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         r"""
         Validate column values are integers.
 
@@ -813,7 +813,7 @@ class DataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         r"""
         Validate column values are numeric (including decimals).
 
@@ -968,7 +968,7 @@ class DataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         """
         Validate column values fall within a defined domain.
 
@@ -1123,7 +1123,7 @@ class DataQualityCheck:
         dqm_detail: ctlDqmMasterDtl,
         dataset_master: ctlDatasetMaster,
         orch_process: OrchestrationProcess,
-    ):
+    ) -> polars.DataFrame:
         """
         Apply custom SQL-like filter to perform flexible quality checks.
 
