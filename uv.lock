@@ -340,7 +340,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "boto3", specifier = ">=1.38.24" },
-    { name = "deltalake", specifier = ">=0.25.5" },
+    { name = "deltalake", specifier = ">=0.25.5,<1" },
     { name = "jaydebeapi", specifier = ">=1.2.3" },
     { name = "jsonpath-ng", specifier = ">=1.7.0" },
     { name = "jwt", specifier = ">=1.3.1" },
