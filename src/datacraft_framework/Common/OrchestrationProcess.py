@@ -169,7 +169,7 @@ class OrchestrationProcess:
             None
 
         Raises:
-            SQLAlchemy exception if an error occurs during insertion or commit.
+            SQLAlchemyError: If a database error occurs during query execution.
         """
         self.session.add(column_metadata)
         self.session.commit()
@@ -321,7 +321,7 @@ class OrchestrationProcess:
             status (Literal["SUCCEEDED", "FAILED", "IN-PROGRESS"]): Filter by the current status of the data acquisition process.
 
         Returns:
-            list[logDataAcquisitionDetail]: List of log entries matching the specified criteria, containing details about data acquisition operations.
+            (list[logDataAcquisitionDetail]): List of log entries matching the specified criteria, containing details about data acquisition operations.
 
         Raises:
             SQLAlchemyError: If database operation fails during query execution.
@@ -356,9 +356,7 @@ class OrchestrationProcess:
                 Filter by status. Defaults to "SUCCEEDED".
 
         Returns:
-            list[logRawProcessDtl]: List of log raw process details objects, ordered by
-                batch_id in ascending order. Filters records where file_status matches
-                the specified status.
+            List of log raw process details objects, ordered by batch_id in ascending order. Filters records where file_status matches the specified status.
 
         Examples:
             >>> get_log_raw_process_dtl(process_id=123, dataset_id=456, status="FAILED")
@@ -399,8 +397,7 @@ class OrchestrationProcess:
                 a single record is returned; otherwise, all matching records are returned.
 
         Returns:
-            Union[list[ctlDatasetMaster], ctlDatasetMaster]: A list of dataset master records if no dataset_id is provided,
-                or a single dataset master record if dataset_id is specified. The results are ordered by dataset_id in ascending order.
+            A list of dataset master records if no dataset_id is provided, or a single dataset master record if dataset_id is specified. The results are ordered by dataset_id in ascending order.
 
         Note:
             Uses SQLAlchemy's select statement to query the ctlDatasetMaster table. Results are ordered by dataset_id.asc().
@@ -439,7 +436,7 @@ class OrchestrationProcess:
             dataset_id (int): Identifier for the dataset.
 
         Returns:
-            list[logRawProcessDtl]: List of logRawProcessDtl entries where the source_file
+            (list[logRawProcessDtl]): List of logRawProcessDtl entries where the source_file
                 has not been processed in data standardisation, and the raw processing
                 status is "SUCCEEDED", filtered by the given process_id and dataset_id.
                 Results are ordered by batch_id ascending.
@@ -485,7 +482,7 @@ class OrchestrationProcess:
             dataset_id (Optional[int]): The ID of the dataset to filter results. Defaults to None.
 
         Returns:
-            list[ctlDataStandardisationDtl]: A list of standardization details objects matching the dataset_id.
+            (list[ctlDataStandardisationDtl]): A list of standardization details objects matching the dataset_id.
         """
         query = select(ctlDataStandardisationDtl).where(
             ctlDataStandardisationDtl.dataset_id == dataset_id
@@ -511,7 +508,7 @@ class OrchestrationProcess:
             dataset_id (int): The ID of the dataset to filter files.
 
         Returns:
-            List[logDqmDtl]: A list of log objects representing unprocessed files in the context of DQM.
+            (List[logDqmDtl]): A list of log objects representing unprocessed files in the context of DQM.
         """
 
         subquery = select(logDqmDtl.source_file).where(logDqmDtl.status == "SUCCEEDED")
@@ -541,7 +538,7 @@ class OrchestrationProcess:
             dataset_id (int): The unique identifier of the dataset.
 
         Returns:
-            List[ctlDqmMasterDtl]: A list of DQM master detail records matching the provided criteria.
+            (List[ctlDqmMasterDtl]): A list of DQM master detail records matching the provided criteria.
         """
         query = select(ctlDqmMasterDtl).where(
             (ctlDqmMasterDtl.dataset_id == dataset_id)
@@ -582,8 +579,8 @@ class OrchestrationProcess:
             dataset_id (int): The ID of the dataset associated with the transformation dependencies.
 
         Returns:
-            List[ctlTransformationDependencyMaster]: A list of transformation dependency records
-            sorted by transformation step.
+            (List[ctlTransformationDependencyMaster]): A list of transformation dependency records
+                                                       sorted by transformation step.
         """
 
         query = (
@@ -614,7 +611,7 @@ class OrchestrationProcess:
             dataset_id (int): The ID of the dataset to filter files.
 
         Returns:
-            list[logTransformationDtl]: A list of transformation detail objects representing unprocessed files.
+            (list[logTransformationDtl]): A list of transformation detail objects representing unprocessed files.
         """
 
         subquery = select(logTransformationDtl.source_file).where(
@@ -666,7 +663,7 @@ class OrchestrationProcess:
             dataset_id (int): The ID of the dataset to filter transformation files.
 
         Returns:
-            List[logTransformationDtl]: A list of transformation log records that are unprocessed by DQM.
+            (List[logTransformationDtl]): A list of transformation log records that are unprocessed by DQM.
         """
 
         subquery = select(logDqmDtl.source_file).where(
@@ -694,7 +691,7 @@ class OrchestrationProcess:
         `dataset_type` is "GOLD". The results are ordered by `dataset_id` in ascending order.
 
         Returns:
-            List[ctlDatasetMaster]: A list of dataset master records representing GOLD-type datasets.
+            (List[ctlDatasetMaster]): A list of dataset master records representing GOLD-type datasets.
         """
         query = (
             select(ctlDatasetMaster)

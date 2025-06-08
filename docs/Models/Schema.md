@@ -1,6 +1,6 @@
 # Documentation for `Schema`
 
-Here you can find the documentation for Lakehouse Project's Configuration Tables list.
+Here you can find the documentation for Datacraft Framework's Configuration Tables.
 
 ::: datacraft_framework.Models.schema.ctlDataAcquisitionConnectionMaster
 
