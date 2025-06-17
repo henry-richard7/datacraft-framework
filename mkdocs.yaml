@@ -63,3 +63,8 @@ nav:
 
       - "Models":
           - "schema": "Models/Schema.md"
+
+  - Examples:
+      - "Connection Config": Examples/Connection Config.md
+      - "Ctl API Connections Dtl": Examples/ctlApiConnectionsDtl.md
+      - "Ctl Column Metadata": Examples/CtlColumnMetadata.md
