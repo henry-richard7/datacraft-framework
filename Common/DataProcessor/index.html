@@ -1,0 +1,3774 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../SchemaCaster/">
+      
+      
+        <link rel="next" href="../../Extractors/ApiExtractor/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Data Processor - Datacraft Framework</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#documentation-for-dataprocessor" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Datacraft Framework" class="md-header__button md-logo" aria-label="Datacraft Framework" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Datacraft Framework
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Processor
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Datacraft Framework" class="md-nav__button md-logo" aria-label="Datacraft Framework" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Datacraft Framework
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Get Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Code Documentation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Code Documentation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Common
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Common
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JsonDataMapper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JsonData Mapper
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FileNameGenerator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FileName Generator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OrchestrationProcess/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orchestration Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PatternValidator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pattern Validator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../S3Process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    S3 Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RegexDateFormats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Regex Date Formats
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SchemaCaster/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Schema Caster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Data Processor
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Processor
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataProcessor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DataProcessor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.BronzeInboundWriter" class="md-nav__link">
+    <span class="md-ellipsis">
+      BronzeInboundWriter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BronzeInboundWriter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.BronzeInboundWriter.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTableWriter" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeltaTableWriter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeltaTableWriter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTableWriter.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTablePublishWrite" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeltaTablePublishWrite
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeltaTablePublishWrite">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTablePublishWrite.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTableRead" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeltaTableRead
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeltaTableRead">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTableRead.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTableRead.read" class="md-nav__link">
+    <span class="md-ellipsis">
+      read
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTableWriterScdType2" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeltaTableWriterScdType2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeltaTableWriterScdType2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTableWriterScdType2.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Extractors - Bronze Layer Scripts
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Extractors - Bronze Layer Scripts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extractors/ApiExtractor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Api Extractor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extractors/DatabaseExtractor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Database Extractor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extractors/S3Extractor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    S3 Extractor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extractors/SalesforceExtractor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Salesforce Extractor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Extractors/SftpExtractor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SFTP Extractor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Silver LayerScripts
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Silver LayerScripts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SilverLayerScripts/DataStandardization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Standardization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SilverLayerScripts/DataQualityCheck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Quality Check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Gold Layer Scripts
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Gold Layer Scripts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GoldLayerScripts/Transformation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transformation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GoldLayerScripts/TransformationDataQualityCheck/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transformation DataQuality Check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Medallion Process
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Medallion Process
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MedallionProcess/BronzeLayer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bronze Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MedallionProcess/SilverLayer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Siver Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MedallionProcess/GoldLayer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gold Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Models
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Models/Schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/Connection%20Config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connection Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/ctlApiConnectionsDtl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ctl API Connections Dtl
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Examples/CtlColumnMetadata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ctl Column Metadata
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataProcessor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DataProcessor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.BronzeInboundWriter" class="md-nav__link">
+    <span class="md-ellipsis">
+      BronzeInboundWriter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BronzeInboundWriter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.BronzeInboundWriter.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTableWriter" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeltaTableWriter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeltaTableWriter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTableWriter.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTablePublishWrite" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeltaTablePublishWrite
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeltaTablePublishWrite">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTablePublishWrite.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTableRead" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeltaTableRead
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeltaTableRead">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTableRead.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTableRead.read" class="md-nav__link">
+    <span class="md-ellipsis">
+      read
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTableWriterScdType2" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeltaTableWriterScdType2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeltaTableWriterScdType2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datacraft_framework.Common.DataProcessor.DeltaTableWriterScdType2.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="documentation-for-dataprocessor">Documentation for <code>DataProcessor</code></h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="datacraft_framework.Common.DataProcessor" class="doc doc-heading">
+            <code>datacraft_framework.Common.DataProcessor</code>
+
+
+</h2>
+
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="datacraft_framework.Common.DataProcessor.BronzeInboundWriter" class="doc doc-heading">
+            <code>BronzeInboundWriter</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+        <p>Writes input data to a CSV or TXT file at the specified location.</p>
+<p>This class supports writing either a Polars DataFrame or a list of dictionaries
+to a <code>.csv</code> or <code>.txt</code> file using a specified delimiter. If the input is a dictionary list,
+it will be automatically converted to a Polars DataFrame before writing.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="datacraft_framework.Common.DataProcessor.BronzeInboundWriter.input_data">input_data</span></code></td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="polars.DataFrame">DataFrame</span>, <span title="List">List</span>[<span title="Dict">Dict</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Data to write to file.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="datacraft_framework.Common.DataProcessor.BronzeInboundWriter.save_location">save_location</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Full path including filename where the file should be saved.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="datacraft_framework.Common.DataProcessor.BronzeInboundWriter.outbound_file_delimiter">outbound_file_delimiter</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Delimiter used when writing the file (e.g., ',', '       ').</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If an unsupported file format is provided in <code>save_location</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">}]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">writer</span> <span class="o">=</span> <span class="n">BronzeInboundWriter</span><span class="p">(</span><span class="n">input_data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">save_location</span><span class="o">=</span><span class="s2">&quot;/path/to/output.csv&quot;</span><span class="p">,</span> <span class="n">outbound_file_delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/datacraft_framework/Common/DataProcessor.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BronzeInboundWriter</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Writes input data to a CSV or TXT file at the specified location.</span>
+
+<span class="sd">    This class supports writing either a Polars DataFrame or a list of dictionaries</span>
+<span class="sd">    to a `.csv` or `.txt` file using a specified delimiter. If the input is a dictionary list,</span>
+<span class="sd">    it will be automatically converted to a Polars DataFrame before writing.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        input_data (Union[polars.DataFrame, List[Dict]]): Data to write to file.</span>
+<span class="sd">        save_location (str): Full path including filename where the file should be saved.</span>
+<span class="sd">        outbound_file_delimiter (str): Delimiter used when writing the file (e.g., &#39;,&#39;, &#39;\t&#39;).</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If an unsupported file format is provided in `save_location`.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">            &gt;&gt;&gt; data = [{&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 30}, {&quot;name&quot;: &quot;Bob&quot;, &quot;age&quot;: 25}]</span>
+<span class="sd">            &gt;&gt;&gt; writer = BronzeInboundWriter(input_data=data, save_location=&quot;/path/to/output.csv&quot;, outbound_file_delimiter=&quot;,&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">input_data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]],</span>
+        <span class="n">save_location</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">outbound_file_delimiter</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Write input data to a CSV or TXT file at the specified location.</span>
+
+<span class="sd">        This constructor checks the file extension in `save_location` (e.g., .csv or .txt)</span>
+<span class="sd">        and writes the provided `input_data` using Polars. If the input is a dictionary list,</span>
+<span class="sd">        it will be converted to a DataFrame before writing.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input_data (Union[polars.DataFrame, list[dict]]): The data to write to file.</span>
+<span class="sd">                Can be either a Polars DataFrame or a list of dictionaries.</span>
+<span class="sd">            save_location (str): Full path (including filename) where the file should be saved.</span>
+<span class="sd">                Supported extensions: `.csv`, `.txt`.</span>
+<span class="sd">            outbound_file_delimiter (str): Delimiter to use when writing the file (e.g., &#39;,&#39;, &#39;\t&#39;).</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If an unsupported file format is provided in `save_location`.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; data = [{&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 30}, {&quot;name&quot;: &quot;Bob&quot;, &quot;age&quot;: 25}]</span>
+<span class="sd">            &gt;&gt;&gt; writer = BronzeInboundWriter(input_data=data, save_location=&quot;/path/to/output.csv&quot;, outbound_file_delimiter=&quot;,&quot;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;csv&quot;</span> <span class="ow">in</span> <span class="n">save_location</span> <span class="ow">or</span> <span class="s2">&quot;txt&quot;</span> <span class="ow">in</span> <span class="n">save_location</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+                <span class="n">input_data</span><span class="o">.</span><span class="n">write_csv</span><span class="p">(</span>
+                    <span class="n">file</span><span class="o">=</span><span class="n">save_location</span><span class="p">,</span>
+                    <span class="n">separator</span><span class="o">=</span><span class="n">outbound_file_delimiter</span><span class="p">,</span>
+                    <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+                <span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span>
+                <span class="n">df</span><span class="o">.</span><span class="n">write_csv</span><span class="p">(</span>
+                    <span class="n">file</span><span class="o">=</span><span class="n">save_location</span><span class="p">,</span>
+                    <span class="n">separator</span><span class="o">=</span><span class="n">outbound_file_delimiter</span><span class="p">,</span>
+                    <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+                <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="datacraft_framework.Common.DataProcessor.BronzeInboundWriter.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">save_location</span><span class="p">,</span> <span class="n">outbound_file_delimiter</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Write input data to a CSV or TXT file at the specified location.</p>
+<p>This constructor checks the file extension in <code>save_location</code> (e.g., .csv or .txt)
+and writes the provided <code>input_data</code> using Polars. If the input is a dictionary list,
+it will be converted to a DataFrame before writing.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>input_data</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="polars.DataFrame">DataFrame</span>, <span title="list">list</span>[<span title="dict">dict</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The data to write to file.
+Can be either a Polars DataFrame or a list of dictionaries.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>save_location</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Full path (including filename) where the file should be saved.
+Supported extensions: <code>.csv</code>, <code>.txt</code>.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>outbound_file_delimiter</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Delimiter to use when writing the file (e.g., ',', ' ').</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If an unsupported file format is provided in <code>save_location</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">}]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">writer</span> <span class="o">=</span> <span class="n">BronzeInboundWriter</span><span class="p">(</span><span class="n">input_data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">save_location</span><span class="o">=</span><span class="s2">&quot;/path/to/output.csv&quot;</span><span class="p">,</span> <span class="n">outbound_file_delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/datacraft_framework/Common/DataProcessor.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">input_data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]],</span>
+    <span class="n">save_location</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">outbound_file_delimiter</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Write input data to a CSV or TXT file at the specified location.</span>
+
+<span class="sd">    This constructor checks the file extension in `save_location` (e.g., .csv or .txt)</span>
+<span class="sd">    and writes the provided `input_data` using Polars. If the input is a dictionary list,</span>
+<span class="sd">    it will be converted to a DataFrame before writing.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_data (Union[polars.DataFrame, list[dict]]): The data to write to file.</span>
+<span class="sd">            Can be either a Polars DataFrame or a list of dictionaries.</span>
+<span class="sd">        save_location (str): Full path (including filename) where the file should be saved.</span>
+<span class="sd">            Supported extensions: `.csv`, `.txt`.</span>
+<span class="sd">        outbound_file_delimiter (str): Delimiter to use when writing the file (e.g., &#39;,&#39;, &#39;\t&#39;).</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If an unsupported file format is provided in `save_location`.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; data = [{&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 30}, {&quot;name&quot;: &quot;Bob&quot;, &quot;age&quot;: 25}]</span>
+<span class="sd">        &gt;&gt;&gt; writer = BronzeInboundWriter(input_data=data, save_location=&quot;/path/to/output.csv&quot;, outbound_file_delimiter=&quot;,&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="s2">&quot;csv&quot;</span> <span class="ow">in</span> <span class="n">save_location</span> <span class="ow">or</span> <span class="s2">&quot;txt&quot;</span> <span class="ow">in</span> <span class="n">save_location</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="n">input_data</span><span class="o">.</span><span class="n">write_csv</span><span class="p">(</span>
+                <span class="n">file</span><span class="o">=</span><span class="n">save_location</span><span class="p">,</span>
+                <span class="n">separator</span><span class="o">=</span><span class="n">outbound_file_delimiter</span><span class="p">,</span>
+                <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">write_csv</span><span class="p">(</span>
+                <span class="n">file</span><span class="o">=</span><span class="n">save_location</span><span class="p">,</span>
+                <span class="n">separator</span><span class="o">=</span><span class="n">outbound_file_delimiter</span><span class="p">,</span>
+                <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+            <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="datacraft_framework.Common.DataProcessor.DeltaTableWriter" class="doc doc-heading">
+            <code>DeltaTableWriter</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/datacraft_framework/Common/DataProcessor.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DeltaTableWriter</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">input_data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span> <span class="nb">str</span><span class="p">],</span>
+        <span class="n">save_location</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">batch_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">partition_columns</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">outbound_file_delimiter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">infer_schema</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Write data to a Delta Lake table with optional partitioning and batch ID tagging.</span>
+
+<span class="sd">        This class supports writing to Delta Lake from the following sources:</span>
+<span class="sd">        - Polars DataFrame</span>
+<span class="sd">        - List of dictionaries (converted into DataFrame)</span>
+<span class="sd">        - CSV/TXT file path (read into DataFrame)</span>
+
+<span class="sd">        A `batch_id` column is added to all records for traceability. Data is written in append mode.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input_data (Union[polars.DataFrame, list[dict], str]): The data to write.</span>
+<span class="sd">                Can be a DataFrame, list of dicts, or a file path to CSV/TXT.</span>
+<span class="sd">            save_location (str): Target location where the Delta table will be saved.</span>
+<span class="sd">                Supports local paths or cloud storage paths (e.g., S3).</span>
+<span class="sd">            batch_id (int): Batch ID to tag all rows with for tracking purposes.</span>
+<span class="sd">            partition_columns (str): Comma-separated string of columns to partition by.</span>
+<span class="sd">            outbound_file_delimiter (Optional[str], optional): Delimiter used in the source file</span>
+<span class="sd">                (if `input_data` is a file path). Defaults to None.</span>
+<span class="sd">            infer_schema (Optional[bool], optional): Whether to infer schema when reading CSV/TXT.</span>
+<span class="sd">                Defaults to False.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If unsupported file format is provided or required parameters are missing.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; writer = DeltaTableWriter(</span>
+<span class="sd">            ...     input_data=&quot;data.csv&quot;,</span>
+<span class="sd">            ...     save_location=&quot;s3://bucket/delta_table&quot;,</span>
+<span class="sd">            ...     batch_id=123,</span>
+<span class="sd">            ...     partition_columns=&quot;country,date&quot;,</span>
+<span class="sd">            ...     outbound_file_delimiter=&quot;,&quot;</span>
+<span class="sd">            ... )</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="n">input_data</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">polars</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="n">batch_id</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;batch_id&quot;</span><span class="p">))</span>
+            <span class="n">input_data</span><span class="o">.</span><span class="n">write_delta</span><span class="p">(</span>
+                <span class="n">save_location</span><span class="p">,</span>
+                <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+                <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;append&quot;</span><span class="p">,</span>
+                <span class="n">delta_write_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;partition_by&quot;</span><span class="p">:</span> <span class="n">partition_columns</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)},</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s2">&quot;csv&quot;</span> <span class="ow">in</span> <span class="n">input_data</span> <span class="ow">or</span> <span class="s2">&quot;txt&quot;</span> <span class="ow">in</span> <span class="n">input_data</span><span class="p">:</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">polars</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+                    <span class="n">input_data</span><span class="p">,</span>
+                    <span class="n">separator</span><span class="o">=</span><span class="n">outbound_file_delimiter</span><span class="p">,</span>
+                    <span class="n">infer_schema</span><span class="o">=</span><span class="n">infer_schema</span><span class="p">,</span>
+                    <span class="n">storage_options</span><span class="o">=</span><span class="p">{</span>
+                        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">aws_key</span><span class="p">,</span>
+                        <span class="s2">&quot;secret&quot;</span><span class="p">:</span> <span class="n">aws_secret</span><span class="p">,</span>
+                        <span class="s2">&quot;client_kwargs&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;endpoint_url&quot;</span><span class="p">:</span> <span class="n">aws_endpoint</span><span class="p">},</span>
+                    <span class="p">},</span>
+                <span class="p">)</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">polars</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="n">batch_id</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;batch_id&quot;</span><span class="p">))</span>
+                <span class="n">df</span><span class="o">.</span><span class="n">write_delta</span><span class="p">(</span>
+                    <span class="n">save_location</span><span class="p">,</span>
+                    <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+                    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;append&quot;</span><span class="p">,</span>
+                    <span class="n">delta_write_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;partition_by&quot;</span><span class="p">:</span> <span class="n">partition_columns</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)},</span>
+                <span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">polars</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="n">batch_id</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;batch_id&quot;</span><span class="p">))</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">write_delta</span><span class="p">(</span>
+                <span class="n">file</span><span class="o">=</span><span class="n">save_location</span><span class="p">,</span>
+                <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+                <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;append&quot;</span><span class="p">,</span>
+                <span class="n">delta_write_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;partition_by&quot;</span><span class="p">:</span> <span class="n">partition_columns</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)},</span>
+            <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="datacraft_framework.Common.DataProcessor.DeltaTableWriter.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">save_location</span><span class="p">,</span> <span class="n">batch_id</span><span class="p">,</span> <span class="n">partition_columns</span><span class="p">,</span> <span class="n">outbound_file_delimiter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">infer_schema</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Write data to a Delta Lake table with optional partitioning and batch ID tagging.</p>
+<p>This class supports writing to Delta Lake from the following sources:
+- Polars DataFrame
+- List of dictionaries (converted into DataFrame)
+- CSV/TXT file path (read into DataFrame)</p>
+<p>A <code>batch_id</code> column is added to all records for traceability. Data is written in append mode.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>input_data</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="polars.DataFrame">DataFrame</span>, <span title="list">list</span>[<span title="dict">dict</span>], <span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The data to write.
+Can be a DataFrame, list of dicts, or a file path to CSV/TXT.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>save_location</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Target location where the Delta table will be saved.
+Supports local paths or cloud storage paths (e.g., S3).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>batch_id</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Batch ID to tag all rows with for tracking purposes.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>partition_columns</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Comma-separated string of columns to partition by.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>outbound_file_delimiter</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Delimiter used in the source file
+(if <code>input_data</code> is a file path). Defaults to None.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>infer_schema</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="bool">bool</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to infer schema when reading CSV/TXT.
+Defaults to False.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If unsupported file format is provided or required parameters are missing.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">writer</span> <span class="o">=</span> <span class="n">DeltaTableWriter</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">input_data</span><span class="o">=</span><span class="s2">&quot;data.csv&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">save_location</span><span class="o">=</span><span class="s2">&quot;s3://bucket/delta_table&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">batch_id</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">partition_columns</span><span class="o">=</span><span class="s2">&quot;country,date&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">outbound_file_delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</code></pre></div>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/datacraft_framework/Common/DataProcessor.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">input_data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span> <span class="nb">str</span><span class="p">],</span>
+    <span class="n">save_location</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">batch_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">partition_columns</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">outbound_file_delimiter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">infer_schema</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Write data to a Delta Lake table with optional partitioning and batch ID tagging.</span>
+
+<span class="sd">    This class supports writing to Delta Lake from the following sources:</span>
+<span class="sd">    - Polars DataFrame</span>
+<span class="sd">    - List of dictionaries (converted into DataFrame)</span>
+<span class="sd">    - CSV/TXT file path (read into DataFrame)</span>
+
+<span class="sd">    A `batch_id` column is added to all records for traceability. Data is written in append mode.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_data (Union[polars.DataFrame, list[dict], str]): The data to write.</span>
+<span class="sd">            Can be a DataFrame, list of dicts, or a file path to CSV/TXT.</span>
+<span class="sd">        save_location (str): Target location where the Delta table will be saved.</span>
+<span class="sd">            Supports local paths or cloud storage paths (e.g., S3).</span>
+<span class="sd">        batch_id (int): Batch ID to tag all rows with for tracking purposes.</span>
+<span class="sd">        partition_columns (str): Comma-separated string of columns to partition by.</span>
+<span class="sd">        outbound_file_delimiter (Optional[str], optional): Delimiter used in the source file</span>
+<span class="sd">            (if `input_data` is a file path). Defaults to None.</span>
+<span class="sd">        infer_schema (Optional[bool], optional): Whether to infer schema when reading CSV/TXT.</span>
+<span class="sd">            Defaults to False.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If unsupported file format is provided or required parameters are missing.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; writer = DeltaTableWriter(</span>
+<span class="sd">        ...     input_data=&quot;data.csv&quot;,</span>
+<span class="sd">        ...     save_location=&quot;s3://bucket/delta_table&quot;,</span>
+<span class="sd">        ...     batch_id=123,</span>
+<span class="sd">        ...     partition_columns=&quot;country,date&quot;,</span>
+<span class="sd">        ...     outbound_file_delimiter=&quot;,&quot;</span>
+<span class="sd">        ... )</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="n">input_data</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">polars</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="n">batch_id</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;batch_id&quot;</span><span class="p">))</span>
+        <span class="n">input_data</span><span class="o">.</span><span class="n">write_delta</span><span class="p">(</span>
+            <span class="n">save_location</span><span class="p">,</span>
+            <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+            <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;append&quot;</span><span class="p">,</span>
+            <span class="n">delta_write_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;partition_by&quot;</span><span class="p">:</span> <span class="n">partition_columns</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)},</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;csv&quot;</span> <span class="ow">in</span> <span class="n">input_data</span> <span class="ow">or</span> <span class="s2">&quot;txt&quot;</span> <span class="ow">in</span> <span class="n">input_data</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">polars</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+                <span class="n">input_data</span><span class="p">,</span>
+                <span class="n">separator</span><span class="o">=</span><span class="n">outbound_file_delimiter</span><span class="p">,</span>
+                <span class="n">infer_schema</span><span class="o">=</span><span class="n">infer_schema</span><span class="p">,</span>
+                <span class="n">storage_options</span><span class="o">=</span><span class="p">{</span>
+                    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">aws_key</span><span class="p">,</span>
+                    <span class="s2">&quot;secret&quot;</span><span class="p">:</span> <span class="n">aws_secret</span><span class="p">,</span>
+                    <span class="s2">&quot;client_kwargs&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;endpoint_url&quot;</span><span class="p">:</span> <span class="n">aws_endpoint</span><span class="p">},</span>
+                <span class="p">},</span>
+            <span class="p">)</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">polars</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="n">batch_id</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;batch_id&quot;</span><span class="p">))</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">write_delta</span><span class="p">(</span>
+                <span class="n">save_location</span><span class="p">,</span>
+                <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+                <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;append&quot;</span><span class="p">,</span>
+                <span class="n">delta_write_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;partition_by&quot;</span><span class="p">:</span> <span class="n">partition_columns</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)},</span>
+            <span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">polars</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="n">batch_id</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;batch_id&quot;</span><span class="p">))</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">write_delta</span><span class="p">(</span>
+            <span class="n">file</span><span class="o">=</span><span class="n">save_location</span><span class="p">,</span>
+            <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+            <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;append&quot;</span><span class="p">,</span>
+            <span class="n">delta_write_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;partition_by&quot;</span><span class="p">:</span> <span class="n">partition_columns</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)},</span>
+        <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="datacraft_framework.Common.DataProcessor.DeltaTablePublishWrite" class="doc doc-heading">
+            <code>DeltaTablePublishWrite</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+        <p>A class to publish a Polars DataFrame to a Delta Lake table with optional batch ID tagging.</p>
+<p>This class writes a DataFrame to a Delta Lake table, supporting:
+- Partitioning by one or more columns
+- Optional addition of a <code>batch_id</code> column for traceability
+- Overwrite mode for idempotent publishing</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/datacraft_framework/Common/DataProcessor.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DeltaTablePublishWrite</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to publish a Polars DataFrame to a Delta Lake table with optional batch ID tagging.</span>
+
+<span class="sd">    This class writes a DataFrame to a Delta Lake table, supporting:</span>
+<span class="sd">    - Partitioning by one or more columns</span>
+<span class="sd">    - Optional addition of a `batch_id` column for traceability</span>
+<span class="sd">    - Overwrite mode for idempotent publishing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">input_data</span><span class="p">:</span> <span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">save_location</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">partition_columns</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">batch_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the Delta table write operation.</span>
+
+<span class="sd">        Writes the provided DataFrame to the specified Delta Lake location. If a `batch_id`</span>
+<span class="sd">        is provided, it adds a new column to the DataFrame before writing.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input_data (polars.DataFrame): The DataFrame to be written to Delta Lake.</span>
+<span class="sd">            save_location (str): Target location where the Delta table will be saved.</span>
+<span class="sd">            partition_columns (str): Comma-separated string of columns to partition by.</span>
+<span class="sd">            batch_id (Optional[int], optional): Optional batch identifier added as a column.</span>
+<span class="sd">                Defaults to None.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; df = pl.DataFrame({&quot;name&quot;: [&quot;Alice&quot;, &quot;Bob&quot;], &quot;age&quot;: [30, 25]})</span>
+<span class="sd">            &gt;&gt;&gt; writer = DeltaTablePublishWrite(</span>
+<span class="sd">            ...     input_data=df,</span>
+<span class="sd">            ...     save_location=&quot;s3://bucket/published_table&quot;,</span>
+<span class="sd">            ...     partition_columns=&quot;age&quot;,</span>
+<span class="sd">            ...     batch_id=123</span>
+<span class="sd">            ... )</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">batch_id</span><span class="p">:</span>
+            <span class="n">input_data</span><span class="o">.</span><span class="n">write_delta</span><span class="p">(</span>
+                <span class="n">save_location</span><span class="p">,</span>
+                <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+                <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;overwrite&quot;</span><span class="p">,</span>
+                <span class="n">delta_write_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;partition_by&quot;</span><span class="p">:</span> <span class="n">partition_columns</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)},</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">input_data</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">polars</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="n">batch_id</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;batch_id&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">write_delta</span><span class="p">(</span>
+                <span class="n">save_location</span><span class="p">,</span>
+                <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+                <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;overwrite&quot;</span><span class="p">,</span>
+                <span class="n">delta_write_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;partition_by&quot;</span><span class="p">:</span> <span class="n">partition_columns</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)},</span>
+            <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="datacraft_framework.Common.DataProcessor.DeltaTablePublishWrite.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">save_location</span><span class="p">,</span> <span class="n">partition_columns</span><span class="p">,</span> <span class="n">batch_id</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Initialize the Delta table write operation.</p>
+<p>Writes the provided DataFrame to the specified Delta Lake location. If a <code>batch_id</code>
+is provided, it adds a new column to the DataFrame before writing.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>input_data</code>
+            </td>
+            <td>
+                  <code><span title="polars.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The DataFrame to be written to Delta Lake.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>save_location</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Target location where the Delta table will be saved.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>partition_columns</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Comma-separated string of columns to partition by.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>batch_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional batch identifier added as a column.
+Defaults to None.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">],</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">25</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">writer</span> <span class="o">=</span> <span class="n">DeltaTablePublishWrite</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">input_data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">save_location</span><span class="o">=</span><span class="s2">&quot;s3://bucket/published_table&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">partition_columns</span><span class="o">=</span><span class="s2">&quot;age&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">batch_id</span><span class="o">=</span><span class="mi">123</span>
+<span class="gp">... </span><span class="p">)</span>
+</code></pre></div>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/datacraft_framework/Common/DataProcessor.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">input_data</span><span class="p">:</span> <span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">save_location</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">partition_columns</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">batch_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize the Delta table write operation.</span>
+
+<span class="sd">    Writes the provided DataFrame to the specified Delta Lake location. If a `batch_id`</span>
+<span class="sd">    is provided, it adds a new column to the DataFrame before writing.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_data (polars.DataFrame): The DataFrame to be written to Delta Lake.</span>
+<span class="sd">        save_location (str): Target location where the Delta table will be saved.</span>
+<span class="sd">        partition_columns (str): Comma-separated string of columns to partition by.</span>
+<span class="sd">        batch_id (Optional[int], optional): Optional batch identifier added as a column.</span>
+<span class="sd">            Defaults to None.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; df = pl.DataFrame({&quot;name&quot;: [&quot;Alice&quot;, &quot;Bob&quot;], &quot;age&quot;: [30, 25]})</span>
+<span class="sd">        &gt;&gt;&gt; writer = DeltaTablePublishWrite(</span>
+<span class="sd">        ...     input_data=df,</span>
+<span class="sd">        ...     save_location=&quot;s3://bucket/published_table&quot;,</span>
+<span class="sd">        ...     partition_columns=&quot;age&quot;,</span>
+<span class="sd">        ...     batch_id=123</span>
+<span class="sd">        ... )</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">batch_id</span><span class="p">:</span>
+        <span class="n">input_data</span><span class="o">.</span><span class="n">write_delta</span><span class="p">(</span>
+            <span class="n">save_location</span><span class="p">,</span>
+            <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+            <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;overwrite&quot;</span><span class="p">,</span>
+            <span class="n">delta_write_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;partition_by&quot;</span><span class="p">:</span> <span class="n">partition_columns</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)},</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">input_data</span><span class="o">.</span><span class="n">with_columns</span><span class="p">(</span><span class="n">polars</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="n">batch_id</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;batch_id&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">write_delta</span><span class="p">(</span>
+            <span class="n">save_location</span><span class="p">,</span>
+            <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+            <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;overwrite&quot;</span><span class="p">,</span>
+            <span class="n">delta_write_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;partition_by&quot;</span><span class="p">:</span> <span class="n">partition_columns</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)},</span>
+        <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="datacraft_framework.Common.DataProcessor.DeltaTableRead" class="doc doc-heading">
+            <code>DeltaTableRead</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+        <p>A class to read data from a Delta Lake table with optional filtering by batch ID or latest version.</p>
+<p>This class provides flexible reading capabilities from a Delta Lake table, including:
+- Reading all data
+- Filtering by a specific <code>batch_id</code>
+- Reading only the latest batch of data</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/datacraft_framework/Common/DataProcessor.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DeltaTableRead</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to read data from a Delta Lake table with optional filtering by batch ID or latest version.</span>
+
+<span class="sd">    This class provides flexible reading capabilities from a Delta Lake table, including:</span>
+<span class="sd">    - Reading all data</span>
+<span class="sd">    - Filtering by a specific `batch_id`</span>
+<span class="sd">    - Reading only the latest batch of data</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">delta_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">batch_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">latest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the DeltaTableRead instance with read parameters.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            delta_path (str): Path to the Delta Lake table.</span>
+<span class="sd">            batch_id (Optional[int], optional): Specific batch ID to filter data. Defaults to None.</span>
+<span class="sd">            latest (bool, optional): Whether to fetch only the latest batch. Defaults to False.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">delta_path</span> <span class="o">=</span> <span class="n">delta_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_id</span> <span class="o">=</span> <span class="n">batch_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latest</span> <span class="o">=</span> <span class="n">latest</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read data from the Delta Lake table based on the configured parameters.</span>
+
+<span class="sd">        If a `batch_id` is provided, it filters the data to only that batch.</span>
+<span class="sd">        If `latest` is True, it reads only the latest batch based on the maximum `batch_id`.</span>
+<span class="sd">        If neither is specified, it reads the full table.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            polars.DataFrame: A DataFrame containing the filtered or full Delta Lake table data.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            FileNotFoundError: If the Delta table at `delta_path` does not exist.</span>
+<span class="sd">            Exception: For other generic I/O or Delta table errors during reading.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_id</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">polars</span><span class="o">.</span><span class="n">scan_delta</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delta_path</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">polars</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;batch_id&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_id</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">latest</span><span class="p">:</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">polars</span><span class="o">.</span><span class="n">scan_delta</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delta_path</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+                <span class="n">max_batch_id</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">polars</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;batch_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+                <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">polars</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;batch_id&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">max_batch_id</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">polars</span><span class="o">.</span><span class="n">read_delta</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">delta_path</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span>
+                <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="datacraft_framework.Common.DataProcessor.DeltaTableRead.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">delta_path</span><span class="p">,</span> <span class="n">batch_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">latest</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Initialize the DeltaTableRead instance with read parameters.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>delta_path</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the Delta Lake table.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>batch_id</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Specific batch ID to filter data. Defaults to None.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>latest</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to fetch only the latest batch. Defaults to False.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/datacraft_framework/Common/DataProcessor.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">delta_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">batch_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">latest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize the DeltaTableRead instance with read parameters.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        delta_path (str): Path to the Delta Lake table.</span>
+<span class="sd">        batch_id (Optional[int], optional): Specific batch ID to filter data. Defaults to None.</span>
+<span class="sd">        latest (bool, optional): Whether to fetch only the latest batch. Defaults to False.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">delta_path</span> <span class="o">=</span> <span class="n">delta_path</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">batch_id</span> <span class="o">=</span> <span class="n">batch_id</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">latest</span> <span class="o">=</span> <span class="n">latest</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="datacraft_framework.Common.DataProcessor.DeltaTableRead.read" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">read</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Read data from the Delta Lake table based on the configured parameters.</p>
+<p>If a <code>batch_id</code> is provided, it filters the data to only that batch.
+If <code>latest</code> is True, it reads only the latest batch based on the maximum <code>batch_id</code>.
+If neither is specified, it reads the full table.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="polars.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>polars.DataFrame: A DataFrame containing the filtered or full Delta Lake table data.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="FileNotFoundError">FileNotFoundError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the Delta table at <code>delta_path</code> does not exist.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="Exception">Exception</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>For other generic I/O or Delta table errors during reading.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/datacraft_framework/Common/DataProcessor.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read data from the Delta Lake table based on the configured parameters.</span>
+
+<span class="sd">    If a `batch_id` is provided, it filters the data to only that batch.</span>
+<span class="sd">    If `latest` is True, it reads only the latest batch based on the maximum `batch_id`.</span>
+<span class="sd">    If neither is specified, it reads the full table.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        polars.DataFrame: A DataFrame containing the filtered or full Delta Lake table data.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        FileNotFoundError: If the Delta table at `delta_path` does not exist.</span>
+<span class="sd">        Exception: For other generic I/O or Delta table errors during reading.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_id</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">polars</span><span class="o">.</span><span class="n">scan_delta</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delta_path</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">polars</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;batch_id&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">latest</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">polars</span><span class="o">.</span><span class="n">scan_delta</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delta_path</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+            <span class="n">max_batch_id</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">polars</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;batch_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+            <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">polars</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;batch_id&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">max_batch_id</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">polars</span><span class="o">.</span><span class="n">read_delta</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">delta_path</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span>
+            <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="datacraft_framework.Common.DataProcessor.DeltaTableWriterScdType2" class="doc doc-heading">
+            <code>DeltaTableWriterScdType2</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+
+        <p>A class to perform SCD Type 2 (Slowly Changing Dimension Type 2) upserts into a Delta Lake table.</p>
+<p>This class writes data from a staging DataFrame into a Delta Lake table using Delta Merge operations.
+It handles both:
+- Updating existing records when changes are detected (<code>when_matched_update</code>)
+- Inserting new records that do not already exist (<code>when_not_matched_insert_all</code>)</p>
+<p>The implementation assumes the presence of specific columns for versioning:
+- <code>eff_strt_dt</code>: Effective start date of the record
+- <code>eff_end_dt</code>: Effective end date of the record (set to '9999-12-31' for active records)
+- <code>sys_checksum</code>: Column used to detect changes (e.g., hash of relevant fields)</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/datacraft_framework/Common/DataProcessor.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">DeltaTableWriterScdType2</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to perform SCD Type 2 (Slowly Changing Dimension Type 2) upserts into a Delta Lake table.</span>
+
+<span class="sd">    This class writes data from a staging DataFrame into a Delta Lake table using Delta Merge operations.</span>
+<span class="sd">    It handles both:</span>
+<span class="sd">    - Updating existing records when changes are detected (`when_matched_update`)</span>
+<span class="sd">    - Inserting new records that do not already exist (`when_not_matched_insert_all`)</span>
+
+<span class="sd">    The implementation assumes the presence of specific columns for versioning:</span>
+<span class="sd">    - `eff_strt_dt`: Effective start date of the record</span>
+<span class="sd">    - `eff_end_dt`: Effective end date of the record (set to &#39;9999-12-31&#39; for active records)</span>
+<span class="sd">    - `sys_checksum`: Column used to detect changes (e.g., hash of relevant fields)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">staging_df</span><span class="p">:</span> <span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">delta_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">primary_keys</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize and execute an SCD Type 2 merge operation on a Delta Lake table.</span>
+
+<span class="sd">        Performs two-phase write logic:</span>
+<span class="sd">        1. Updates existing active records if they have changed.</span>
+<span class="sd">        2. Inserts new records as active entries with `eff_end_dt = &#39;9999-12-31&#39;`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            staging_df (polars.DataFrame): Incoming data containing staged changes.</span>
+<span class="sd">            delta_path (str): Path to the target Delta Lake table.</span>
+<span class="sd">            primary_keys (str): SQL-like string expression representing the join condition,</span>
+<span class="sd">                e.g., `&quot;target.id = staging.id&quot;`.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; writer = DeltaTableWriterScdType2(</span>
+<span class="sd">            ...     staging_df=staging_data,</span>
+<span class="sd">            ...     delta_path=&quot;s3://bucket/table&quot;,</span>
+<span class="sd">            ...     primary_keys=&quot;target.id = staging.id&quot;</span>
+<span class="sd">            ... )</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">staging_df</span><span class="o">.</span><span class="n">write_delta</span><span class="p">(</span>
+            <span class="n">delta_path</span><span class="p">,</span>
+            <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+            <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;merge&quot;</span><span class="p">,</span>
+            <span class="n">delta_merge_options</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;source_alias&quot;</span><span class="p">:</span> <span class="s2">&quot;staging&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;target_alias&quot;</span><span class="p">:</span> <span class="s2">&quot;target&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;predicate&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;target.eff_end_dt == &#39;9999-12-31&#39; AND </span><span class="si">{</span><span class="n">primary_keys</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">when_matched_update</span><span class="p">(</span>
+            <span class="n">predicate</span><span class="o">=</span><span class="s2">&quot;target.sys_checksum != staging.sys_checksum&quot;</span><span class="p">,</span>
+            <span class="n">updates</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;eff_end_dt&quot;</span><span class="p">:</span> <span class="s2">&quot;staging.eff_strt_dt&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;sys_del_flg&quot;</span><span class="p">:</span> <span class="s2">&quot;&#39;Y&#39;&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">when_not_matched_insert_all</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+        <span class="n">staging_df</span><span class="o">.</span><span class="n">write_delta</span><span class="p">(</span>
+            <span class="n">delta_path</span><span class="p">,</span>
+            <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+            <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;merge&quot;</span><span class="p">,</span>
+            <span class="n">delta_merge_options</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;source_alias&quot;</span><span class="p">:</span> <span class="s2">&quot;staging&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;target_alias&quot;</span><span class="p">:</span> <span class="s2">&quot;target&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;predicate&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;target.eff_end_dt == &#39;9999-12-31&#39; AND </span><span class="si">{</span><span class="n">primary_keys</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">when_not_matched_insert_all</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="datacraft_framework.Common.DataProcessor.DeltaTableWriterScdType2.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">staging_df</span><span class="p">,</span> <span class="n">delta_path</span><span class="p">,</span> <span class="n">primary_keys</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Initialize and execute an SCD Type 2 merge operation on a Delta Lake table.</p>
+<p>Performs two-phase write logic:
+1. Updates existing active records if they have changed.
+2. Inserts new records as active entries with <code>eff_end_dt = '9999-12-31'</code>.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>staging_df</code>
+            </td>
+            <td>
+                  <code><span title="polars.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Incoming data containing staged changes.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>delta_path</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the target Delta Lake table.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>primary_keys</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>SQL-like string expression representing the join condition,
+e.g., <code>"target.id = staging.id"</code>.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">writer</span> <span class="o">=</span> <span class="n">DeltaTableWriterScdType2</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">staging_df</span><span class="o">=</span><span class="n">staging_data</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">delta_path</span><span class="o">=</span><span class="s2">&quot;s3://bucket/table&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">primary_keys</span><span class="o">=</span><span class="s2">&quot;target.id = staging.id&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</code></pre></div>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/datacraft_framework/Common/DataProcessor.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">staging_df</span><span class="p">:</span> <span class="n">polars</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">delta_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">primary_keys</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize and execute an SCD Type 2 merge operation on a Delta Lake table.</span>
+
+<span class="sd">    Performs two-phase write logic:</span>
+<span class="sd">    1. Updates existing active records if they have changed.</span>
+<span class="sd">    2. Inserts new records as active entries with `eff_end_dt = &#39;9999-12-31&#39;`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        staging_df (polars.DataFrame): Incoming data containing staged changes.</span>
+<span class="sd">        delta_path (str): Path to the target Delta Lake table.</span>
+<span class="sd">        primary_keys (str): SQL-like string expression representing the join condition,</span>
+<span class="sd">            e.g., `&quot;target.id = staging.id&quot;`.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; writer = DeltaTableWriterScdType2(</span>
+<span class="sd">        ...     staging_df=staging_data,</span>
+<span class="sd">        ...     delta_path=&quot;s3://bucket/table&quot;,</span>
+<span class="sd">        ...     primary_keys=&quot;target.id = staging.id&quot;</span>
+<span class="sd">        ... )</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">staging_df</span><span class="o">.</span><span class="n">write_delta</span><span class="p">(</span>
+        <span class="n">delta_path</span><span class="p">,</span>
+        <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;merge&quot;</span><span class="p">,</span>
+        <span class="n">delta_merge_options</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;source_alias&quot;</span><span class="p">:</span> <span class="s2">&quot;staging&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;target_alias&quot;</span><span class="p">:</span> <span class="s2">&quot;target&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;predicate&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;target.eff_end_dt == &#39;9999-12-31&#39; AND </span><span class="si">{</span><span class="n">primary_keys</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">when_matched_update</span><span class="p">(</span>
+        <span class="n">predicate</span><span class="o">=</span><span class="s2">&quot;target.sys_checksum != staging.sys_checksum&quot;</span><span class="p">,</span>
+        <span class="n">updates</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;eff_end_dt&quot;</span><span class="p">:</span> <span class="s2">&quot;staging.eff_strt_dt&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sys_del_flg&quot;</span><span class="p">:</span> <span class="s2">&quot;&#39;Y&#39;&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">when_not_matched_insert_all</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+    <span class="n">staging_df</span><span class="o">.</span><span class="n">write_delta</span><span class="p">(</span>
+        <span class="n">delta_path</span><span class="p">,</span>
+        <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;merge&quot;</span><span class="p">,</span>
+        <span class="n">delta_merge_options</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;source_alias&quot;</span><span class="p">:</span> <span class="s2">&quot;staging&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;target_alias&quot;</span><span class="p">:</span> <span class="s2">&quot;target&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;predicate&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;target.eff_end_dt == &#39;9999-12-31&#39; AND </span><span class="si">{</span><span class="n">primary_keys</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">when_not_matched_insert_all</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
